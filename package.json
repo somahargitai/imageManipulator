@@ -1,0 +1,40 @@
+{
+  "name": "imagemanipulator",
+  "version": "1.0.0",
+  "description": "Some collected scripts to edit images by code",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/somahargitai/imageManipulator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/somahargitai/imageManipulator/issues"
+  },
+  "homepage": "https://github.com/somahargitai/imageManipulator#readme",
+  "dependencies": {
+    "@types/node": "^18.16.3",
+    "aws-sdk": "^2.1376.0",
+    "axios": "^1.4.0",
+    "dotenv": "^16.0.3",
+    "image-size": "^1.0.2",
+    "imagemin": "^8.0.1",
+    "imagemin-jpegtran": "^7.0.0",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "jimp": "^0.22.7",
+    "jpeg-js": "^0.4.4",
+    "md5": "^2.3.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  },
+  "devDependencies": {
+    "@types/imagemin": "^8.0.1",
+    "@types/imagemin-jpegtran": "^5.0.1",
+    "@types/md5": "^2.3.2"
+  }
+}
