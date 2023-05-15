@@ -1,7 +1,7 @@
 const contants = {
-  ROOT: "../image_container_folder/weboptimization_input",
-  OUTPUT: "../image_container_folder/weboptimization_output",
-  TEMP: "../image_container_folder/weboptimization_temp",
+  ROOT: "./sampleData/input",
+  OUTPUT: "./sampleData/output",
+  TEMP: "./sampleData/temp",
   RESIZE_IMAGE_WIDTH: 1000, // IN PIXELS
   JIMP_QUALITY: 70,
   MAX_IMAGE_SIZE: 350000, // IN BYTES 350 KB
