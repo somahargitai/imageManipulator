@@ -4,7 +4,7 @@ Some collected scripts to edit images by code
 
 ## Requirements
 
-- Node.js with npm installed
+- Node.js with npm installed: [https://nodejs.org/en](https://nodejs.org/en)
 
 ## Preqrequisites
 
