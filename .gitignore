@@ -1,3 +1,12 @@
+# all images in sampleData/input
+sampleData/input/*.png
+sampleData/input/*.jpg
+sampleData/input/*.jpeg
+sampleData/output/*.png
+sampleData/output/*.jpg
+sampleData/output/*.jpeg
+
+
 # Logs
 logs
 *.log
