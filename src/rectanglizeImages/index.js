@@ -24,6 +24,7 @@ async function resizeImage(imageFileName) {
   let count = 0;
 
   for (imageFileName of targetFiles) {
+    console.log(imageFileName);
     let inputImagePath = inputPath + "/" + imageFileName;
     let outputImagePath = outputPath + "/" + imageFileName;
 
@@ -40,6 +41,7 @@ async function resizeImage(imageFileName) {
 
     // Save the resulting image
     await image.write(outputImagePath);
+    console.log(`Image resized: ${imageFileName}`);
   }
 }
 resizeImage();
