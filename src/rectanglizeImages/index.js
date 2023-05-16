@@ -20,15 +20,31 @@ async function resizeImage(imageFileName) {
     );
   });
 
+  // filter out images that are already resized
+  const resizedFiles = await fs.readdirSync(outputPath);
+  const newResizesToDo = targetFiles.filter((file) => {
+    return !resizedFiles.includes(file);
+  });
+
+  console.log('---------------------------------')
+  console.log('Will resize these files:')
+  console.log(newResizesToDo)
+  console.log('---------------------------------')
+
+
+  // ?
+
+  // https://github.com/jimp-dev/jimp/issues/915
+
   let data = {};
   let count = 0;
 
-  for (imageFileName of targetFiles) {
+  for (imageFileName of newResizesToDo) {
     console.log(imageFileName);
     let inputImagePath = inputPath + "/" + imageFileName;
     let outputImagePath = outputPath + "/" + imageFileName;
 
-    const image = await  Jimp.read(inputImagePath);
+    const image = await Jimp.read(inputImagePath);
 
     // Resize the image while preserving the aspect ratio
     await image
