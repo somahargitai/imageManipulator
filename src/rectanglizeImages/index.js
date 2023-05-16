@@ -26,15 +26,29 @@ async function resizeImage(imageFileName) {
     return !resizedFiles.includes(file);
   });
 
-  console.log('---------------------------------')
-  console.log('Will resize these files:')
-  console.log(newResizesToDo)
-  console.log('---------------------------------')
+  console.log("---------------------------------");
+  console.log("Will resize these files:");
+  console.log(newResizesToDo);
+  console.log("---------------------------------");
 
-
-  // ?
-
+  // memory limit error fix
   // https://github.com/jimp-dev/jimp/issues/915
+  const cachedJpegDecoderJpeg = Jimp.decoders["image/jpeg"];
+  Jimp.decoders["image/jpeg"] = (data) => {
+    const userOpts = { maxMemoryUsageInMB: 1024 };
+    return cachedJpegDecoderJpeg(data, userOpts);
+  };
+  const cachedJpegDecoderJpg = Jimp.decoders["image/jpg"];
+  Jimp.decoders["image/jpg"] = (data) => {
+    const userOpts = { maxMemoryUsageInMB: 1024 };
+    return cachedJpegDecoderJpg(data, userOpts);
+  };
+  const cachedJpegDecoderPng = Jimp.decoders["image/png"];
+  Jimp.decoders["image/png"] = (data) => {
+    const userOpts = { maxMemoryUsageInMB: 1024 };
+    return cachedJpegDecoderPng(data, userOpts);
+  };
+  // end of memory limit error fix
 
   let data = {};
   let count = 0;
