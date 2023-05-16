@@ -9,26 +9,28 @@ const outputPath = "./sampleData/output";
 const desiredWidth = 1500;
 const desiredHeight = 2000;
 
-const files = fs.readdirSync(inputPath);
+async function resizeImage(imageFileName) {
+  const files = await fs.readdirSync(inputPath);
 
-const targetFiles = files.filter((file) => {
-  return (
-    path.extname(file).toLowerCase() === ".jpg" ||
-    path.extname(file).toLowerCase() === ".png" ||
-    path.extname(file).toLowerCase() === ".jpeg"
-  );
-});
+  const targetFiles = files.filter((file) => {
+    return (
+      path.extname(file).toLowerCase() === ".jpg" ||
+      path.extname(file).toLowerCase() === ".png" ||
+      path.extname(file).toLowerCase() === ".jpeg"
+    );
+  });
 
-let data = {};
-let count = 0;
+  let data = {};
+  let count = 0;
 
-targetFiles.forEach((imageFileName) => {
-  let inputImagePath = inputPath + "/" + imageFileName;
-  let outputImagePath = outputPath + "/" + imageFileName;
+  for (imageFileName of targetFiles) {
+    let inputImagePath = inputPath + "/" + imageFileName;
+    let outputImagePath = outputPath + "/" + imageFileName;
 
-  Jimp.read(inputImagePath, (err, image) => {
+    const image = await  Jimp.read(inputImagePath);
+
     // Resize the image while preserving the aspect ratio
-    image
+    await image
       .contain(
         desiredWidth,
         desiredHeight,
@@ -37,6 +39,7 @@ targetFiles.forEach((imageFileName) => {
       .background(0xdcdcdcff); // Set the background color to white
 
     // Save the resulting image
-    image.write(outputImagePath);
-  });
-});
+    await image.write(outputImagePath);
+  }
+}
+resizeImage();
